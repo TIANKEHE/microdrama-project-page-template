@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #f284a0;
-            --soft-pink: #fbc2eb;
-            --grid-bg: #f5f5f5;
-            --grid-line: #e0e0e0;
-            --text-dark: #2d3436;
-            --text-light: #636e72;
+            /* 基于你提供的图片提取的色值 */
+            --gradient-start: #f284a0; /* 暖珊瑚粉 */
+            --gradient-end: #fce4ed;   /* 浅粉白 */
+            --grid-line: rgba(242, 132, 160, 0.1); /* 方格线使用主色淡化版 */
+            --text-dark: #3d3d3d;
+            --accent-color: #e66a8a;
         }
 
         body, html {
@@ -20,14 +20,14 @@
             padding: 0;
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            line-height: 1.6;
-            scroll-behavior: smooth;
+            line-height: 1.7;
+            background-color: #fafafa;
         }
 
-        /* 第一部分：渐变粉色 Header */
+        /* 第一部分：基于图片的双色渐变 Header */
         .hero-section {
-            min-height: 80vh;
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--soft-pink) 100%);
+            min-height: 75vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -35,164 +35,177 @@
             text-align: center;
             padding: 2rem;
             color: white;
+            /* 增加一点阴影让文字更清晰 */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .hero-section h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
+            margin: 0;
+            letter-spacing: -1.5px;
         }
 
         .hero-section h2 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 300;
-            max-width: 800px;
-            opacity: 0.9;
+            max-width: 750px;
+            margin-top: 1rem;
+            opacity: 0.95;
+            line-height: 1.4;
         }
 
         .authors {
-            margin-top: 3rem;
+            margin-top: 4rem;
             font-size: 1.1rem;
-        }
-
-        .authors span {
-            margin: 0 10px;
             font-weight: 500;
         }
 
         .affiliations {
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
             opacity: 0.8;
+            font-weight: 300;
         }
 
-        /* 第二部分：浅灰色方格背景区 */
+        /* 第二部分：浅灰色/粉色调方格背景区 */
         .content-section {
-            background-color: var(--grid-bg);
+            background-color: #fcfcfc;
             background-image: 
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 30px 30px; /* 方格大小 */
-            padding: 5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-size: 40px 40px;
+            padding: 6rem 1.5rem;
         }
 
         .container {
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(242, 132, 160, 0.08);
+            border: 1px solid rgba(242, 132, 160, 0.05);
         }
 
         h3 {
-            font-size: 1.8rem;
-            color: var(--primary-pink);
-            border-left: 5px solid var(--primary-pink);
-            padding-left: 15px;
-            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h3::before {
+            content: "";
+            width: 30px;
+            height: 4px;
+            background: var(--gradient-start);
+            margin-right: 15px;
+            border-radius: 2px;
         }
 
         .abstract-text {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            text-align: justify;
+            font-size: 1.15rem;
+            color: #4a4a4a;
+            margin-bottom: 3rem;
         }
 
-        /* 标签风格 */
-        .highlight-box {
+        .abstract-text strong {
+            color: var(--accent-color);
+        }
+
+        /* 策略展示卡片 */
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 3rem 0;
         }
 
-        .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-bottom: 4px solid var(--primary-pink);
+        .feature-card {
+            padding: 2rem;
+            background: #fffafa;
+            border-radius: 16px;
+            border: 1px solid #fce4ed;
+            transition: transform 0.3s ease;
         }
 
-        .card h4 {
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gradient-start);
+        }
+
+        .feature-card h4 {
             margin-top: 0;
-            color: var(--primary-pink);
-        }
-
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 4px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
         }
 
         footer {
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            background: var(--grid-bg);
+            font-size: 0.85rem;
+            color: #b2bec3;
+            background: #fcfcfc;
         }
 
-        @media (max-width: 768px) {
-            .hero-section h1 { font-size: 2.2rem; }
-            .container { padding: 1.5rem; }
+        /* 修饰：代码样式 */
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            background: #fce4ed;
+            color: #d63384;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
-    <section class="hero-section">
+    <header class="hero-section">
         <h1>Audience in the Loop</h1>
         <h2>Viewer Feedback-Driven Content Creation in Micro-drama Production</h2>
         
         <div class="authors">
-            <span>Gengchen Cao*¹</span> | <span>Tianke He*²</span> | <span>Yixuan Liu³</span> | <span>RAY LC³⁺</span>
+            Gengchen Cao*¹ &nbsp;·&nbsp; Tianke He*² &nbsp;·&nbsp; Yixuan Liu³ &nbsp;·&nbsp; RAY LC³⁺
         </div>
         <div class="affiliations">
-            ¹Tsinghua University &nbsp;&nbsp; ²Sichuan University of Media and Communication &nbsp;&nbsp; ³City University of Hong Kong
+            ¹Tsinghua University &nbsp;|&nbsp; ²Sichuan University of Media and Communication &nbsp;|&nbsp; ³City University of Hong Kong
         </div>
-    </section>
+    </header>
 
     <section class="content-section">
         <div class="container">
             <h3>Abstract</h3>
-            <p class="abstract-text">
-                The popularization of social media has led to increasing consumption of narrative content in byte-sized formats. Such <strong>micro-dramas</strong> contain fast-pace action and emotional cliffs, particularly attractive to emerging Chinese markets in platforms like Douyin and Kuaishou. 
+            <div class="abstract-text">
+                The shift toward <strong>byte-sized narrative content</strong> has transformed how stories are told. In platforms like Douyin and Kuaishou, micro-dramas thrive on fast-paced action and <strong>emotional cliffs</strong>. 
                 <br><br>
-                Through 28 semi-structured interviews, we found that the short-turn-around workflow leads to writers taking on multiple roles simultaneously, iteratively adapting to storylines in response to real-time audience feedback in the form of <strong>comments, reposts, and memes</strong>. This work reveals audience interaction as a new paradigm for collaborative creative processes on social media.
-            </p>
+                Our study of 28 professional scriptwriters reveals a new paradigm: <strong>Audience-Directed Workflows</strong>. Writers now operate as multi-role creators, weaving real-time feedback—comments, reposts, and memes—directly into the iterative fabric of the story.
+            </div>
 
-            <div class="highlight-box">
-                <div class="card">
-                    <h4>The Workflow</h4>
-                    <p>Writers adapt to fast-paced, audience-directed cycles, moving beyond traditional platform bias to real-time iteration.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Iterative Adaptation</h4>
+                    <p>Moving from static scripts to dynamic storylines that evolve with <span class="tag">real-time feedback</span>.</p>
                 </div>
-                <div class="card">
-                    <h4>New Narrative Styles</h4>
-                    <p>Identification of <span class="mono">AI-generated</span> and <span class="mono">Audience-responsive</span> micro-drama paradigms.</p>
+                <div class="feature-card">
+                    <h4>Collaborative Creation</h4>
+                    <p>Revealing audience interaction as a primary driver in <span class="tag">social media paradigms</span>.</p>
                 </div>
             </div>
 
-            <h3 style="margin-top: 4rem;">Research Questions</h3>
-            <ul style="list-style-type: none; padding: 0;">
-                <li style="margin-bottom: 1.5rem;">
-                    <strong>RQ1:</strong> How do micro-drama writers navigate the step-by-step processes of iterative content creation under platform affordances?
-                </li>
-                <li>
-                    <strong>RQ2:</strong> In what ways does real-time audience feedback (comments, memes) reshape the narrative structure of digital dramas?
-                </li>
+            <h3 style="margin-top: 4rem;">Key Insights</h3>
+            <p>We identified two emerging styles in the micro-drama ecosystem:</p>
+            <ul>
+                <li><strong>AI-Generated Micro-dramas:</strong> Efficiency-driven production pipelines.</li>
+                <li><strong>Audience-Responsive Micro-dramas:</strong> Highly interactive, community-led narratives.</li>
             </ul>
         </div>
     </section>
 
     <footer>
-        © 2026 CHI Conference on Human Factors in Computing Systems. All rights reserved.
+        Presented at CHI 2026 · Exploring the Future of Digital Narrative
     </footer>
 
 </body>
