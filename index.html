@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audience in the Loop: Micro-drama Production</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 基础色值：基于 RGB(245,136,136) 稍微加重一点 */
-            --primary-pink: rgb(230, 110, 110); 
-            --light-pink: rgb(252, 228, 228);
+            /* 颜色微调：基于 RGB(245,136,136) 稍微加重 */
+            --primary-pink: #e06666; 
+            --gradient-start: #f284a0;
+            --gradient-end: #fce4ed;
+            --grid-line: rgba(224, 102, 102, 0.12); /* 方格线颜色 */
             --text-dark: #2d3436;
-            --grid-line: rgba(230, 110, 110, 0.12); /* 方格线颜色 */
         }
 
         body, html {
@@ -19,13 +20,14 @@
             padding: 0;
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            background-color: #fdfdfd;
+            line-height: 1.7;
+            background-color: #fafafa;
         }
 
-        /* Header：渐变粉色 */
+        /* 第一部分：渐变 Header */
         .hero-section {
             min-height: 70vh;
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--light-pink) 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -40,103 +42,129 @@
             font-weight: 800;
             margin: 0;
             letter-spacing: -2px;
-            /* 让大标题在渐变背景上更跳脱 */
-            text-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .hero-section h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 400;
             max-width: 800px;
-            margin-top: 1.5rem;
-            opacity: 0.9;
+            margin-top: 1.2rem;
+            opacity: 0.95;
         }
 
-        .authors-box {
-            margin-top: 3.5rem;
+        .authors {
+            margin-top: 4rem;
+            font-size: 1.1rem;
             font-weight: 600;
         }
 
         .affiliations {
-            font-size: 0.85rem;
-            margin-top: 10px;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
             opacity: 0.8;
         }
 
-        /* 核心内容区：坐标纸背景 */
+        /* 第二部分：方格背景 + 毛玻璃容器 */
         .content-section {
-            background-color: #fafafa;
+            background-color: #f9f9f9;
             background-image: 
-                linear-gradient(var(--grid-line) 1.5px, transparent 1.5px),
-                linear-gradient(90deg, var(--grid-line) 1.5px, transparent 1.5px);
-            background-size: 45px 45px;
-            padding: 5rem 1rem;
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            padding: 6rem 1.5rem;
+            position: relative;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            /* --- 毛玻璃质感关键代码 --- */
+            background: rgba(255, 255, 255, 0.65); /* 半透明背景 */
+            backdrop-filter: blur(12px);           /* 模糊效果 */
+            -webkit-backdrop-filter: blur(12px);    /* 兼容 Safari */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* 玻璃边缘高亮 */
+            /* ------------------------ */
             padding: 4rem;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
-            border: 1px solid rgba(230, 110, 110, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
         }
 
-        /* 重点：正文标题颜色 */
         h3 {
-            color: var(--primary-pink);
             font-size: 1.8rem;
-            margin-top: 0;
-            border-bottom: 3px solid var(--primary-pink);
-            display: inline-block;
+            color: var(--primary-pink);
             margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+        }
+
+        h3::before {
+            content: "";
+            width: 35px;
+            height: 5px;
+            background: var(--primary-pink);
+            margin-right: 15px;
+            border-radius: 10px;
         }
 
         .abstract-text {
             font-size: 1.2rem;
-            line-height: 1.8;
-            color: #444;
+            color: #333;
+            margin-bottom: 3rem;
             text-align: justify;
         }
 
-        /* 强调文字 */
-        .highlight {
+        .abstract-text strong {
             color: var(--primary-pink);
+            font-weight: 700;
+        }
+
+        /* 策略卡片也做成微毛玻璃效果 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            padding: 2.2rem;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            border: 1px solid rgba(224, 102, 102, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.8);
+            border-color: var(--primary-pink);
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+            color: var(--primary-pink);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(224, 102, 102, 0.1);
+            color: var(--primary-pink);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
             font-weight: 600;
         }
 
-        /* BibTeX 引用块 */
-        .bibtex-section {
-            margin-top: 4rem;
-            background: #2d3436;
-            color: #dfe6e9;
-            padding: 2rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            position: relative;
-        }
-
-        .bibtex-section::before {
-            content: "BibTeX Citation";
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: var(--primary-pink);
-            color: white;
-            padding: 2px 12px;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
         footer {
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 3rem;
-            color: #b2bec3;
             font-size: 0.9rem;
+            color: #999;
+            background: #f9f9f9;
         }
     </style>
 </head>
@@ -146,36 +174,45 @@
         <h1>Audience in the Loop</h1>
         <h2>Viewer Feedback-Driven Content Creation in Micro-drama Production</h2>
         
-        <div class="authors-box">
+        <div class="authors">
             Gengchen Cao*¹ · Tianke He*² · Yixuan Liu³ · RAY LC³⁺
         </div>
         <div class="affiliations">
-            ¹Tsinghua University | ²Sichuan University of Media and Communication | ³City University of Hong Kong
+            ¹Tsinghua University &nbsp;|&nbsp; ²Sichuan University of Media and Communication &nbsp;|&nbsp; ³City University of Hong Kong
         </div>
     </header>
 
     <section class="content-section">
         <div class="container">
             <h3>Abstract</h3>
-            <p class="abstract-text">
-                The popularization of social media has led to increasing consumption of narrative content in byte-sized formats. Such <span class="highlight">micro-dramas</span> contain fast-paced action and emotional cliffs, particularly attractive to emerging Chinese markets. 
+            <div class="abstract-text">
+                The shift toward <strong>byte-sized narrative content</strong> has transformed how stories are told. In platforms like Douyin and Kuaishou, micro-dramas thrive on fast-paced action and <strong>emotional cliffs</strong>. 
                 <br><br>
-                In this study, we found that the short-turn-around workflow leads to writers taking on multiple roles simultaneously, iteratively adapting to storylines in response to <span class="highlight">real-time audience feedback</span> in the form of comments, reposts, and memes. This work reveals audience interaction as a new paradigm for collaborative creative processes.
-            </p>
-
-            <div class="bibtex-section">
-@inproceedings{cao2026audience,
-  title={Audience in the Loop: Viewer Feedback-Driven Content Creation in Micro-drama Production},
-  author={Cao, Gengchen and He, Tianke and Liu, Yixuan and LC, RAY},
-  booktitle={Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems},
-  year={2026}
-}
+                Our study of 28 professional scriptwriters reveals a new paradigm: <strong>Audience-Directed Workflows</strong>. Writers now operate as multi-role creators, weaving real-time feedback—comments, reposts, and memes—directly into the iterative fabric of the story.
             </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Iterative Adaptation</h4>
+                    <p>Moving from static scripts to dynamic storylines that evolve with <span class="tag">real-time feedback</span>.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Collaborative Creation</h4>
+                    <p>Revealing audience interaction as a primary driver in <span class="tag">social media paradigms</span>.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 4rem;">Key Insights</h3>
+            <p style="font-size: 1.1rem;">We identified two emerging styles in the micro-drama ecosystem:</p>
+            <ul style="font-size: 1.1rem; line-height: 2;">
+                <li><strong>AI-Generated Micro-dramas:</strong> Efficiency-driven production pipelines.</li>
+                <li><strong>Audience-Responsive Micro-dramas:</strong> Highly interactive, community-led narratives.</li>
+            </ul>
         </div>
     </section>
 
     <footer>
-        © 2026 CHI Conference · Research on Human-Computer Interaction
+        Presented at CHI 2026 · Exploring the Future of Digital Narrative
     </footer>
 
 </body>
