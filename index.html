@@ -22,7 +22,6 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Hero Section --- */
         .hero-section {
             min-height: 100vh;
             background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
@@ -32,14 +31,9 @@
         }
 
         .title-container { text-align: center; max-width: 1100px; }
-        
-        .hero-section h1 {
-            font-size: 3.2rem; font-weight: 800; margin: 0; line-height: 1.1;
-            letter-spacing: -2px; text-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
+        .hero-section h1 { font-size: 3.2rem; font-weight: 800; margin: 0; line-height: 1.1; letter-spacing: -2px; }
         .authors { margin-top: 2rem; font-weight: 600; font-size: 1.2rem; }
-        .affiliations { margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9; font-weight: 300; }
+        .affiliations { margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
 
         .findings-container {
             display: flex; flex-wrap: wrap; justify-content: center;
@@ -49,118 +43,56 @@
         .glass-card {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px; padding: 2rem;
-            width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            border-radius: 24px; padding: 2rem; width: 300px;
         }
 
-        .glass-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.35); }
-
-        .glass-card .label {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
-            text-transform: uppercase; background: var(--primary-pink);
-            color: white; padding: 2px 10px; border-radius: 5px; display: inline-block;
-            margin-bottom: 1rem; font-weight: 800;
-        }
-
-        .glass-card h4 { margin: 0 0 10px 0; color: #333; font-size: 1.25rem; font-weight: 800; }
-        .glass-card p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: #444; font-weight: 400; }
-
-        .action-buttons {
-            display: flex; gap: 20px; margin-top: 4rem; justify-content: center;
-        }
-
+        .action-buttons { display: flex; gap: 20px; margin-top: 4rem; }
         .btn-action {
             text-decoration: none; color: white; font-family: 'JetBrains Mono', monospace;
-            font-weight: 600; font-size: 1rem; padding: 14px 30px; border-radius: 50px;
-            background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 14px 30px; border-radius: 50px; background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s;
         }
+        .btn-action:hover { background: white; color: var(--primary-pink); }
 
-        .btn-action:hover {
-            background: white; color: var(--primary-pink);
-            transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        /* --- Content Section --- */
         .content-section {
-            background-color: #fcfcfc;
-            background-image: 
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 40px 40px;
-            padding: 8rem 2rem;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px; padding: 8rem 2rem;
         }
 
         .abstract-box {
-            max-width: 900px; margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 4rem; border-radius: 40px;
-            border: 1px solid rgba(224, 102, 102, 0.1);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+            max-width: 900px; margin: 0 auto; background: rgba(255, 255, 255, 0.95);
+            padding: 4rem; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.04);
         }
 
         .abstract-box h2 {
             font-size: 1.8rem; color: var(--primary-pink); margin-top: 3.5rem;
-            font-weight: 800; border-bottom: 3px solid var(--primary-pink);
-            display: inline-block; margin-bottom: 1.5rem;
-        }
-        
-        .abstract-box h2:first-of-type { margin-top: 0; }
-
-        .abstract-text { font-size: 1.1rem; line-height: 1.7; text-align: justify; color: #444; }
-
-        .keyword-tag {
-            background: #fdf2f2; color: var(--primary-pink); padding: 4px 12px; 
-            border-radius: 6px; font-size: 0.85rem; font-weight: 700; margin-right: 8px;
-            display: inline-block; margin-top: 5px;
+            font-weight: 800; border-bottom: 3px solid var(--primary-pink); display: inline-block;
         }
 
-        /* Media Containers */
-        .figure-container, .video-container { margin: 3rem 0; text-align: center; }
-        .figure-container img, .video-container video { 
-            max-width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-        }
-        .video-container video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
-        
-        .figure-caption {
-            margin-top: 1rem; font-size: 0.9rem; color: #7f8c8d; line-height: 1.5;
-            text-align: left; padding: 0 15px; border-left: 3px solid #eee;
-        }
+        .abstract-text { font-size: 1.1rem; line-height: 1.7; color: #444; }
 
-        /* Grid & Cards UI */
+        /* Figure Layouts */
+        .figure-container { margin: 2.5rem 0; text-align: center; }
+        .figure-container img { max-width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .figure-caption { margin-top: 1rem; font-size: 0.9rem; color: #7f8c8d; text-align: left; border-left: 3px solid #eee; padding-left: 15px; }
+
+        /* Side-by-side images */
+        .figure-row { display: flex; gap: 20px; margin: 2.5rem 0; }
+        .figure-row .figure-container { flex: 1; margin: 0; }
+
         .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 2rem 0; }
         .method-tile { background: #f9f9f9; padding: 1.5rem; border-radius: 20px; text-align: center; }
-        .method-tile .num { font-size: 2rem; font-weight: 800; color: var(--primary-pink); display: block;}
-        .method-tile .label { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+        .method-tile .num { font-size: 2rem; font-weight: 800; color: var(--primary-pink); display: block; }
 
-        .rq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 2rem; }
-        .rq-card { 
-            background: white; padding: 1.5rem; border-radius: 16px; 
-            border-left: 5px solid var(--primary-pink); box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
-        }
+        .bibtex-box { background: #2d3436; color: #eee; padding: 2rem; border-radius: 15px; font-family: 'JetBrains Mono'; font-size: 0.85rem; margin-top: 2rem; white-space: pre-wrap; }
 
-        .bibtex-box {
-            background: #2d3436; color: #eee; padding: 2rem; border-radius: 15px;
-            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-top: 2rem;
-            white-space: pre-wrap; position: relative; line-height: 1.5;
-        }
-        
-        .copy-btn {
-            position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 14px;
-            border-radius: 8px; cursor: pointer; font-size: 0.75rem; transition: background 0.2s;
-        }
-
-        footer { text-align: center; padding: 5rem; color: #b2bec3; font-size: 0.9rem; }
+        footer { text-align: center; padding: 5rem; color: #b2bec3; }
 
         @media (max-width: 768px) {
-            .hero-section h1 { font-size: 2.2rem; }
-            .methods-grid, .rq-grid { grid-template-columns: 1fr; }
-            .abstract-box { padding: 2.5rem 1.5rem; }
+            .figure-row { flex-direction: column; }
+            .methods-grid { grid-template-columns: 1fr; }
+            .abstract-box { padding: 2rem; }
         }
     </style>
 </head>
@@ -173,28 +105,13 @@
             <div class="authors">Gengchen Cao*¹ · Tianke He*² · Yixuan Liu³ · RAY LC³⁺</div>
             <div class="affiliations">¹Tsinghua University | ²Sichuan University of Media and Communication | ³City University of Hong Kong</div>
         </div>
-
         <div class="findings-container">
-            <div class="glass-card">
-                <span class="label">Finding 01</span>
-                <h4>🎭 Multi-role Adaptation</h4>
-                <p>The short-turn-around workflow leads to writers taking on multiple roles simultaneously, adapting storylines in response to feedback.</p>
-            </div>
-            <div class="glass-card">
-                <span class="label">Finding 02</span>
-                <h4>🔍 Implicit Signals</h4>
-                <p>Creators utilize comments, reposts, and memes as indicators of emotional resonance and "cliffhanger" efficacy.</p>
-            </div>
-            <div class="glass-card">
-                <span class="label">Finding 03</span>
-                <h4>🆕 New Paradigms</h4>
-                <p>Identified unique narrative styles such as AI-generated micro-dramas and audience-responsive interactive content.</p>
-            </div>
+            <div class="glass-card"><h4>🎭 Multi-role Adaptation</h4><p>Short-turn-around workflows lead to creators taking on multiple roles.</p></div>
+            <div class="glass-card"><h4>🔍 Implicit Signals</h4><p>Comments and memes serve as indicators of emotional resonance.</p></div>
+            <div class="glass-card"><h4>🆕 New Paradigms</h4><p>AI-generated and audience-responsive interactive content styles.</p></div>
         </div>
-
         <div class="action-buttons">
             <a href="https://arxiv.org/abs/2602.14045" target="_blank" class="btn-action">arXiv</a>
-            <a href="static/pdfs/CHI2026_AudienceInTheLoop.pdf" target="_blank" class="btn-action">Full Paper</a>
             <a href="#presentation-video" class="btn-action">Presentation</a>
         </div>
     </section>
@@ -204,123 +121,60 @@
             
             <h2 id="presentation-video">Video Preview</h2>
             <div class="video-container">
-                <video controls poster="static/images/video_poster.png">
-                    <source src="static/videos/preview.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="figure-caption"><strong>Video:</strong> A 10-minute overview of our findings on micro-drama production workflows and audience-in-the-loop interactions.</p>
-            </div>
-
-            <h2>Abstract</h2>
-            <div class="abstract-text">
-                The popularization of social media has led to increasing consuming of narrative content in byte-sized formats. Such <strong>micro-dramas</strong> contain fast-pace action and emotional cliffs, particularly attractive to emerging Chinese markets in platforms like Douyin and Kuaishou. 
-                <br><br>
-                Through 28 semi-structured interviews, we found that the workflow leads to writers iteratively adapting to storylines in response to <strong>real-time audience feedback</strong>. This work reveals audience interaction as a new paradigm for collaborative creative processes on social media.
-            </div>
-            <div style="margin-top: 1.5rem;">
-                <span class="keyword-tag"># Micro-dramas</span>
-                <span class="keyword-tag"># Participatory Culture</span>
-                <span class="keyword-tag"># Collaborative Creation</span>
-            </div>
-
-            <div class="figure-container">
-                <img src="static/images/fig1.png" alt="Production workflow">
-                <p class="figure-caption">
-                    <strong>Figure 1:</strong> Production workflow of “My Sweet Home”, showing how audience comments and engagement were integrated into narrative development, promotional design, and media circulation, illustrating an “audience-in-the-loop” model.
-                </p>
-            </div>
-
-            <h2>Research Questions</h2>
-            <div class="rq-grid">
-                <div class="rq-card">
-                    <div style="font-family: 'JetBrains Mono'; color: var(--primary-pink); font-weight: 800; font-size: 0.8rem;">RQ1 / WORKFLOW</div>
-                    <p style="margin-top: 10px; font-weight: 600;">What emerging roles and production workflows have micro-drama creators adopted?</p>
-                </div>
-                <div class="rq-card">
-                    <div style="font-family: 'JetBrains Mono'; color: var(--primary-pink); font-weight: 800; font-size: 0.8rem;">RQ2 / INTERACTION</div>
-                    <p style="margin-top: 10px; font-weight: 600;">How do creators collaborate with audiences to iteratively shape plots and characters?</p>
-                </div>
-            </div>
-
-            <h2>Related Work</h2>
-            <div class="figure-container">
-                <img src="static/images/fig2.png" alt="Micro-drama ecosystem comparison">
-                <p class="figure-caption">
-                    <strong>Figure 2:</strong> Distinguishing micro-dramas from short-form videos and general online content in platformized media ecosystems.
-                </p>
-            </div>
-
-            <div class="figure-container">
-                <img src="static/images/fig3.png" alt="Micro-drama interfaces">
-                <p class="figure-caption">
-                    <strong>Figure 3:</strong> Example of micro-drama interfaces: top row shows platform-level distribution and promotion; bottom row shows individual creators’ production interfaces.
-                </p>
-            </div>
-
-            <div class="abstract-text" style="font-size: 1rem;">
-                <p><strong>1. Narrative Form:</strong> 1-3 min episodes driven by platform affordances (vertical screen, algorithmic recommendation).</p>
-                <p><strong>2. Platform Logics:</strong> Shift from three-act structures to "hook-driven" models with blurred professional roles.</p>
-                <p><strong>3. Participation:</strong> Integration of implicit signals (keywords, memes) into the creative decision-making process.</p>
-                <p><strong>4. Creative Labor:</strong> Challenges of algorithmic governance, content homogenization, and asymmetric effort.</p>
-            </div>
-
-            <h2>Methods</h2>
-            <div class="methods-grid">
-                <div class="method-tile">
-                    <span class="num">28</span>
-                    <span class="label">Interviewees</span>
-                </div>
-                <div class="method-tile">
-                    <span class="num">6m-9y</span>
-                    <span class="label">Exp. Range</span>
-                </div>
-                <div class="method-tile">
-                    <span class="num">Inductive</span>
-                    <span class="label">Coding Method</span>
-                </div>
-            </div>
-            
-            <div class="abstract-text" style="font-size: 1rem; margin-top: 2rem; border-top: 1px solid #eee; pt: 1.5rem;">
-                This study recruited 28 participants through acquaintance referrals and snowball sampling, including 24 micro-drama practitioners and 4 traditional screenwriters. All participants had relevant professional experience and their works were released on mainstream platforms. Semi-structured interviews in Mandarin were conducted via Tencent Meeting or WeChat voice call and fully recorded, with open-ended questions used to explore participants’ creative practices and flexible follow-ups adopted to capture emerging creative behaviors. Inductive thematic coding was applied to the transcribed interview data. Three researchers independently coded the material to develop an initial code set, which was refined around the dimensions of creative workflows and audience participation until core variable saturation was achieved. All conclusions of the study were drawn from interview data, and cases were used solely for illustrative purposes.
+                <video controls style="width:100%; border-radius:12px;"><source src="static/videos/preview.mp4" type="video/mp4"></video>
             </div>
 
             <h2>Key Results</h2>
             <div class="abstract-text">
                 <p><strong>🚀 Workflow Evolution:</strong> Transitioned from linear industrial models to "test-and-broadcast" rapid cycles. Algorithms created new roles like <em>Traffic Operation Managers</em>.</p>
+            </div>
+
+            <div class="figure-container">
+                <img src="static/images/fig4.png" alt="Workflow Comparison">
+                <p class="figure-caption"><strong>Figure 4:</strong> Comparative Workflow of Traditional Screenwriting and Microdrama Creation.</p>
+            </div>
+
+            <div class="abstract-text">
                 <p><strong>🔄 Iterative Feedback:</strong> Creators rely on quantitative data and textual feedback to adjust actor screen time and plot reversals in real-time.</p>
-                
-                <div style="background: #fff5f5; border: 1px dashed var(--primary-pink); padding: 1.5rem; border-radius: 16px; margin-top: 1rem;">
-                    <strong style="color: #c0392b;">Pitfalls:</strong> Overreliance on platform feedback can lead to homogenization, fake traffic risks, and the marginalization of the "silent majority."
+            </div>
+
+            <div class="figure-row">
+                <div class="figure-container">
+                    <img src="static/images/fig5.png" alt="Feedback Step 1/2">
+                    <p class="figure-caption"><strong>Figure 5:</strong> Evidence-backed feedback handling workflow: from audience comments to script changes and on-screen outcomes (Step 1/2). Example source: “Mr. Li, please sign for your twins, a boy and a girl.”</p>
+                </div>
+                <div class="figure-container">
+                    <img src="static/images/fig6.png" alt="Feedback Step 3/4">
+                    <p class="figure-caption"><strong>Figure 6:</strong> Evidence-backed feedback handling workflow: from audience comments to script changes and on-screen outcomes (Step 3/4). Example source: “Mr. Li, please sign for your twins, a boy and a girl.”</p>
                 </div>
             </div>
 
+            <h2>🎬 Emerging Themes & Narrative Styles</h2>
+            <div class="abstract-text">
+                <p><strong>Thematic Shifts:</strong> Focus on everyday social conflicts, cross-domain functional narratives, and AI-powered spectacular genres that lower production barriers for high-budget themes.</p>
+                <p><strong>Narrative Innovations:</strong> Adopt fragmented-integrated storytelling, accelerated pacing, participatory interactive structures, and AI-augmented production techniques.</p>
+                <p><strong>Cross-Cultural Adaptation:</strong> Chinese firms dominate overseas markets with two strategies—cost-effective translation-dubbing, and culturally adaptive script rewriting—with distinct audience interaction patterns between China and the West.</p>
+            </div>
+
+            <div style="background: #fff5f5; border: 1px dashed var(--primary-pink); padding: 1.5rem; border-radius: 16px; margin-top: 2rem;">
+                <strong style="color: #c0392b;">Pitfalls:</strong> Overreliance on platform feedback can lead to homogenization, fake traffic risks, and the marginalization of the "silent majority."
+            </div>
+
+            <h2>Methods</h2>
+            <div class="methods-grid">
+                <div class="method-tile"><span class="num">28</span><span class="label">Interviewees</span></div>
+                <div class="method-tile"><span class="num">6m-9y</span><span class="label">Exp. Range</span></div>
+                <div class="method-tile"><span class="num">Inductive</span><span class="label">Coding</span></div>
+            </div>
+            <p class="abstract-text" style="font-size: 0.95rem; opacity: 0.8;">
+                This study recruited 28 participants through acquaintance referrals and snowball sampling... (详细方法论文字)
+            </p>
+
             <h2>BibTeX</h2>
-            <div class="bibtex-box" id="bibtex-text">
-                <button class="copy-btn" onclick="copyBib()">Copy BibTeX</button>
-@article{cao2026audience,
-  title={Audience in the Loop: Viewer Feedback-Driven Content Creation in Micro-drama Production on Social Media},
-  author={Cao, Gengchen and He, Tianke and Liu, Yixuan and LC, RAY},
-  journal={arXiv preprint arXiv:2602.14045},
-  year={2026},
-  publisher={ACM},
-  doi={10.1145/3772318.3790592}
-}</div>
+            <div class="bibtex-box">@article{cao2026audience, ...}</div>
         </div>
     </section>
 
-    <footer>
-        © 2026 CHI Conference · Research on Human-Computer Interaction
-    </footer>
-
-    <script>
-        function copyBib() {
-            const text = document.getElementById('bibtex-text').innerText.replace('Copy BibTeX', '').trim();
-            navigator.clipboard.writeText(text).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                btn.innerText = 'Copied!';
-                setTimeout(() => { btn.innerText = 'Copy BibTeX'; }, 2000);
-            });
-        }
-    </script>
+    <footer>© 2026 CHI Conference</footer>
 </body>
 </html>
