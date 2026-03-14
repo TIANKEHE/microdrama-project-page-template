@@ -129,16 +129,27 @@
             display: inline-block; margin-top: 5px;
         }
 
-        /* Media Containers */
+        /* Media Containers - 分离控制图片和视频比例 */
         .figure-container, .video-container { margin: 2rem 0; text-align: center; }
-        .figure-container img, .video-container video {
+
+        /* 图片样式：保持原始比例 */
+        .figure-container img {
             width: 100%;
-    height: auto;         /* 关键：让高度自动 */
-    aspect-ratio: 16 / 9;  /* 关键：锁定 16:9 比例，防止变扁 */
-    object-fit: cover;    /* 确保内容填充 */
-    border-radius: 12px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-    display: block;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: block;
+        }
+
+        /* 视频样式：锁定 16:9，防止拉伸变形 */
+        .video-container video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: block;
         }
         
         .figure-row { display: flex; gap: 20px; margin: 2rem 0; align-items: flex-start; }
@@ -149,7 +160,6 @@
             text-align: left; padding: 0 12px; border-left: 3px solid #eee;
         }
 
-        /* ... 其余 CSS 保持不变 ... */
         .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 2rem 0; }
         .method-tile { background: #f9f9f9; padding: 1.5rem; border-radius: 20px; text-align: center; }
         .method-tile .num { font-size: 2rem; font-weight: 800; color: var(--primary-pink); display: block;}
@@ -208,10 +218,10 @@
             
             <h2 id="presentation-video">Video Preview</h2>
             <div class="video-container">
-<video controls preload="metadata" poster="static/images/video_poster.jpg">
-    <source src="static/videos/video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+                <video controls preload="metadata" poster="static/images/video_poster.jpg">
+                    <source src="static/videos/video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 <p class="figure-caption"><strong>Video:</strong> A 10-minute overview of our findings on micro-drama production workflows and audience-in-the-loop interactions.</p>
             </div>
 
@@ -261,13 +271,6 @@
                 </p>
             </div>
 
-            <div class="abstract-text" style="font-size: 1rem;">
-                <p><strong>1. Narrative Form:</strong> 1-3 min episodes driven by platform affordances (vertical screen, algorithmic recommendation).</p>
-                <p><strong>2. Platform Logics:</strong> Shift from three-act structures to "hook-driven" models with blurred professional roles.</p>
-                <p><strong>3. Participation:</strong> Integration of implicit signals (keywords, memes) into the creative decision-making process.</p>
-                <p><strong>4. Creative Labor:</strong> Challenges of algorithmic governance, content homogenization, and asymmetric effort.</p>
-            </div>
-
             <h2>Methods</h2>
             <div class="methods-grid">
                 <div class="method-tile">
@@ -284,15 +287,7 @@
                 </div>
             </div>
             
-            <div class="abstract-text" style="font-size: 1rem; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem;">
-                This study recruited 28 participants through acquaintance referrals and snowball sampling, including 24 micro-drama practitioners and 4 traditional screenwriters. All participants had relevant professional experience and their works were released on mainstream platforms. Semi-structured interviews in Mandarin were conducted via Tencent Meeting or WeChat voice call and fully recorded, with open-ended questions used to explore participants’ creative practices and flexible follow-ups adopted to capture emerging creative behaviors. Inductive thematic coding was applied to the transcribed interview data. Three researchers independently coded the material to develop an initial code set, which was refined around the dimensions of creative workflows and audience participation until core variable saturation was achieved. All conclusions of the study were drawn from interview data, and cases were used solely for illustrative purposes.
-            </div>
-
             <h2>Key Results</h2>
-            <div class="abstract-text">
-                <p><strong>🚀 Workflow Evolution:</strong> Transitioned from linear industrial models to "test-and-broadcast" rapid cycles. Algorithms created new roles like <em>Traffic Operation Managers</em>.</p>
-            </div>
-
             <div class="figure-container">
                 <img src="static/images/fig4.png" alt="Comparative Workflow">
                 <p class="figure-caption">
@@ -300,71 +295,21 @@
                 </p>
             </div>
 
-            <div class="abstract-text">
-                <p><strong>🔄 Iterative Feedback:</strong> Creators rely on quantitative data and textual feedback to adjust actor screen time and plot reversals in real-time.</p>
-            </div>
-
             <div class="figure-row">
                 <div class="figure-container">
                     <img src="static/images/fig5.png" alt="Feedback handling Step 1/2">
                     <p class="figure-caption">
-                        <strong>Figure 5:</strong> Evidence-backed feedback handling workflow: from audience comments to script changes and on-screen outcomes (Step 1/2). Example source: “Mr. Li, please sign for your twins, a boy and a girl."
+                        <strong>Figure 5:</strong> Evidence-backed feedback handling workflow (Step 1/2).
                     </p>
                 </div>
                 <div class="figure-container">
                     <img src="static/images/fig6.png" alt="Feedback handling Step 3/4">
                     <p class="figure-caption">
-                        <strong>Figure 6:</strong> Evidence-backed feedback handling workflow: from audience comments to script changes and on-screen outcomes (Step 3/4). Example source: “Mr. Li, please sign for your twins, a boy and a girl."
+                        <strong>Figure 6:</strong> Evidence-backed feedback handling workflow (Step 3/4).
                     </p>
                 </div>
             </div>
 
-            <h3>🎬 Emerging Themes & Narrative Styles</h3>
-            <div class="abstract-text" style="font-size: 1rem; background: #fdfdfd; padding: 1.5rem; border-radius: 12px; border: 1px solid #f0f0f0;">
-                <p><strong>• Thematic Shifts:</strong> Focus on everyday social conflicts, cross-domain functional narratives, and AI-powered spectacular genres that lower production barriers for high-budget themes.</p>
-                <p><strong>• Narrative Innovations:</strong> Adopt fragmented-integrated storytelling, accelerated pacing, participatory interactive structures, and AI-augmented production techniques.</p>
-                <p><strong>• Cross-Cultural Adaptation:</strong> Chinese firms dominate overseas markets with two strategies—cost-effective translation-dubbing, and culturally adaptive script rewriting—with distinct audience interaction patterns between China and the West.</p>
-            </div>
-
-            <div style="background: #fff5f5; border: 1px dashed var(--primary-pink); padding: 1.5rem; border-radius: 16px; margin-top: 2rem;">
-                <strong style="color: #c0392b;">Pitfalls:</strong> Overreliance on platform feedback can lead to homogenization, fake traffic risks, and the marginalization of the "silent majority."
-            </div>
-            
-            <h2>Discussion</h2>
-            <div class="abstract-text">
-                <p>
-                    <strong>Reconstruction of Narrative Interactivity:</strong> 
-                    Micro-dramas have evolved beyond pre-scripted linear works into <em>participatory cultural products</em>. They are constantly reshaped through a distributed interactive system of comments, memes, and hashtags. We find that audience feedback penetrates the entire creative process, where platform algorithms amplify these implicit signals to construct a dynamic narrative community of <strong>"audiences-creators-platforms"</strong>.
-                </p>
-
-                <div class="rq-grid" style="margin-top: 2rem;">
-                    <div class="rq-card" style="border-left: 5px solid #636e72; background: #fdfdfd;">
-                        <div style="font-family: 'JetBrains Mono'; color: #636e72; font-weight: 800; font-size: 0.8rem;">CRITICAL ANALYSIS / PERSONALIZATION</div>
-                        <p style="font-size: 0.95rem; margin-top: 10px;">While data alignment meets expectations, it risks <strong>content homogenization</strong> and narrative echo chambers. The discourse power often resides with a vocal minority, potentially marginalizing the "silent majority" and raising privacy concerns regarding the capture of sensitive user data in comments.</p>
-                    </div>
-                    <div class="rq-card" style="border-left: 5px solid var(--primary-pink); background: #fffafb;">
-                        <div style="font-family: 'JetBrains Mono'; color: var(--primary-pink); font-weight: 800; font-size: 0.8rem;">FUTURE DIRECTIONS / DESIGN</div>
-                        <p style="font-size: 0.95rem; margin-top: 10px;">We propose <strong>transparent interpretation tools</strong> for screenwriters to maintain coherence during rapid iteration. Systems should shift from short-term "click-bait" metrics to long-term satisfaction and robust privacy protection mechanisms.</p>
-                    </div>
-                </div>
-
-                <div style="background: #f9f9f9; padding: 2rem; border-radius: 20px; border: 1px solid #eee;">
-                    <h3 style="margin-top: 0; font-size: 1.2rem; color: var(--primary-pink);">Design Implications</h3>
-                    <ul style="padding-left: 1.2rem; line-height: 1.8; font-size: 1rem;">
-                        <li><strong>Signal Transparency:</strong> Provide creators with tools to decode complex audience sentiment beyond simple metrics.</li>
-                        <li><strong>Ecosystem Diversity:</strong> Implement mechanisms to protect minority opinions and prevent algorithmic "race to the bottom" content.</li>
-                        <li><strong>Configurable Feedback:</strong> Enable creators to toggle between different audience "perspectives" to explore alternative narrative scenarios.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-top: 5rem; padding: 3rem; background: linear-gradient(135deg, #fdf2f2 0%, #ffffff 100%); border-radius: 40px; border: 1px solid var(--gradient-end);">
-                <h2 style="margin-top: 0;">Conclusion</h2>
-                <p class="abstract-text" style="margin-bottom: 0;">
-                    Our findings provide a novel framework for understanding <strong>collaborative creative labor</strong> in the platformized era. By identifying the "Audience-in-the-Loop" model, this work offers design insights for a sustainable micro-drama ecosystem. We emphasize the urgent need to balance <strong>audience influence, narrative diversity, and creative autonomy</strong> in the next generation of social media entertainment platforms.
-                </p>
-            </div>
-            
             <h2>BibTeX</h2>
             <div class="bibtex-box" id="bibtex-text">
                 <button class="copy-btn" onclick="copyBib()">Copy BibTeX</button>
