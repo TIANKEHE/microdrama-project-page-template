@@ -129,10 +129,9 @@
             display: inline-block; margin-top: 5px;
         }
 
-        /* Media Containers - 分离控制图片和视频比例 */
+        /* Media Containers */
         .figure-container, .video-container { margin: 2rem 0; text-align: center; }
 
-        /* 图片样式：保持原始比例 */
         .figure-container img {
             width: 100%;
             height: auto;
@@ -141,7 +140,6 @@
             display: block;
         }
 
-        /* 视频样式：锁定 16:9，防止拉伸变形 */
         .video-container video {
             width: 100%;
             height: auto;
@@ -168,7 +166,13 @@
         .rq-card { background: white; padding: 1.5rem; border-radius: 16px; border-left: 5px solid var(--primary-pink); box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .bibtex-box { background: #2d3436; color: #eee; padding: 2rem; border-radius: 15px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-top: 2rem; white-space: pre-wrap; position: relative; line-height: 1.5; }
         .copy-btn { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 0.75rem; transition: background 0.2s; }
+        
+        /* Footer Style */
         footer { text-align: center; padding: 5rem; color: #b2bec3; font-size: 0.9rem; }
+        .footer-socials { margin-bottom: 15px; display: flex; justify-content: center; gap: 25px; }
+        .footer-socials a { color: #b2bec3; text-decoration: none; transition: color 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
+        .footer-socials a:hover { color: var(--primary-pink); }
+
         @media (max-width: 768px) { .hero-section h1 { font-size: 2.2rem; } .methods-grid, .rq-grid, .figure-row { grid-template-columns: 1fr; flex-direction: column; } .abstract-box { padding: 2.5rem 1.5rem; } }
     </style>
 </head>
@@ -190,6 +194,7 @@
             </div>
             <div class="glass-card">
                 <span class="label">Finding 02</span>
+                <span class="label">Finding 02</span>
                 <h4>🔍 Implicit Signals</h4>
                 <p>Creators utilize comments, reposts, and memes as indicators of emotional resonance and "cliffhanger" efficacy.</p>
             </div>
@@ -209,6 +214,12 @@
             </a>
             <a href="#presentation-video" class="btn-action">
                 <i class="fas fa-video"></i>Presentation
+            </a>
+            <a href="https://recfro.github.io/" target="_blank" class="btn-action">
+                <i class="fas fa-globe"></i>Website
+            </a>
+            <a href="https://www.instagram.com/studiofornarrativespaces/" target="_blank" class="btn-action">
+                <i class="fab fa-instagram"></i>Instagram
             </a>
         </div>
     </section>
@@ -390,6 +401,14 @@
     </section>
 
     <footer>
+        <div class="footer-socials">
+            <a href="https://recfro.github.io/" target="_blank">
+                <i class="fas fa-globe"></i> Studio Website
+            </a>
+            <a href="https://www.instagram.com/studiofornarrativespaces/" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
         © 2026 CHI Conference · Research on Human-Computer Interaction
     </footer>
 
